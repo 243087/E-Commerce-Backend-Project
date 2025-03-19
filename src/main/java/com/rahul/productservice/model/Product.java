@@ -1,10 +1,17 @@
 package com.rahul.productservice.model;
 
-public class Product {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+@Entity
+public class Product extends BaseModel{
     private Integer id;
     private String title;
     private String description;
     private String imageURL;
+
+@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+@JsonIgnore
     private Category category;
 
     public void setId(Integer id) {
